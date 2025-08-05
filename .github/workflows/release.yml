@@ -45,7 +45,7 @@ jobs:
           git tag -f "${{ steps.next-latest-release.outputs.version }}"
           git push -f origin "${{ steps.next-latest-release.outputs.version }}"
 
-          git tag -f "${{ steps.next-latest-release.outputs.major }}"
-          git push -f origin "${{ steps.next-latest-release.outputs.major }}"
+          git tag -f "${{ steps.next-latest-release.outputs.version-major }}"
+          git push -f origin "${{ steps.next-latest-release.outputs.version-major }}"
 
           gh release create --generate-notes --latest "${{ steps.next-latest-release.outputs.version }}"
