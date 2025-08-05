@@ -71,6 +71,12 @@ module.exports = async function ({
   const nextVersionMajor = nextVersion.substring(0, nextVersion.indexOf('.'));
   log(`Next latest release major: ${nextVersionMajor}`);
 
+  // Extract version number without prefix (e.g., "1.0.0" from "v1.0.0", "release-1.0.0", etc.)
+  const versionMatch = nextVersion.match(/(\d+\.\d+\.\d+)/);
+  const nextVersionNumber = versionMatch ? versionMatch[1] : nextVersion;
+
   core.setOutput('version', nextVersion);
-  core.setOutput('major', nextVersionMajor);
+  core.setOutput('major', nextVersionMajor); // deprecated, use version-major instead
+  core.setOutput('version-major', nextVersionMajor);
+  core.setOutput('version-number', nextVersionNumber);
 }

@@ -18,8 +18,16 @@ jobs:
 
       - run: |
           echo "version: ${{ steps.next-latest-release.outputs.version }}"
-          echo "major: ${{ steps.next-latest-release.outputs.major }}"
+          echo "version-major: ${{ steps.next-latest-release.outputs.version-major }}"
+          echo "version-number: ${{ steps.next-latest-release.outputs.version-number }}"
 ```
+
+## Outputs
+
+- `version`: The next semantic version number (e.g., `v1.2.3`)
+- `major`: The major version number (e.g., `v1`) **[DEPRECATED - use `version-major` instead]**
+- `version-major`: The major version number (e.g., `v1`)
+- `version-number`: The version number without prefix (e.g., `1.2.3`)
 
 ## Development
 

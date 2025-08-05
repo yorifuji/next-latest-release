@@ -23,8 +23,14 @@ outputs:
     description: "The next semantic version number"
     value: ${{ steps.next-latest-release.outputs.version }}
   major:
-    description: "The major version number"
+    description: "The major version number (deprecated, use version-major instead)"
     value: ${{ steps.next-latest-release.outputs.major }}
+  version-major:
+    description: "The major version number"
+    value: ${{ steps.next-latest-release.outputs.version-major }}
+  version-number:
+    description: "The version number without prefix"
+    value: ${{ steps.next-latest-release.outputs.version-number }}
 
 runs:
   using: composite
