@@ -25,7 +25,7 @@ jobs:
       contents: write
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - uses: ./
         id: next-latest-release
@@ -42,8 +42,8 @@ jobs:
           git config --local user.name $GIT_USER_NAME
           git config --local user.email $GIT_USER_EMAIL
 
-          git tag -f "${{ steps.next-latest-release.outputs.version }}"
-          git push -f origin "${{ steps.next-latest-release.outputs.version }}"
+          git tag "${{ steps.next-latest-release.outputs.version }}"
+          git push origin "${{ steps.next-latest-release.outputs.version }}"
 
           git tag -f "${{ steps.next-latest-release.outputs.version-major }}"
           git push -f origin "${{ steps.next-latest-release.outputs.version-major }}"
